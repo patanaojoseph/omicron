@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function AllCat(){
         $categories = Category::latest()->paginate(12);
         $trashCat = Category::onlyTrashed()->latest()->paginate(12);
